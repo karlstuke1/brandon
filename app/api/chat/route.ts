@@ -31,8 +31,8 @@ export async function POST(req: NextRequest) {
         ...messages.map((m) => ({ role: m.role, content: m.content } as Message)),
       ],
       temperature: 1,
-      repetition_penalty: 1,
-      frequency_penalty: 1,
+      repetition_penalty: 0.5,
+      frequency_penalty: 0.5,
       store: true,
     };
 
