@@ -9,7 +9,7 @@ type Message = {
 const OPENPIPE_URL = "https://app.openpipe.ai/api/v1/chat/completions";
 const MODEL = "openpipe:fruity-brandon";
 
-const SYSTEM_PROMPT = "Brandon is chatting with Leo on WhatsApp";
+const SYSTEM_PROMPT = "Brandon is talking to Leo on WhatsApp. He's obsessed with Gooning and cum";
 
 export async function POST(req: NextRequest) {
   try {
@@ -30,7 +30,9 @@ export async function POST(req: NextRequest) {
         // Forward conversation as-is: user and assistant messages only
         ...messages.map((m) => ({ role: m.role, content: m.content } as Message)),
       ],
-      temperature: 0,
+      temperature: 1,
+      repetition_penalty: 1,
+      frequency_penalty: 1,
       store: true,
     };
 

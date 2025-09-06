@@ -56,22 +56,17 @@ export default function Page() {
   return (
     <div className="chat">
       <div ref={listRef} className="messages" aria-live="polite">
-        {messages.length === 0 ? (
-          <div className="bubble assistant">
-            <div className="role">assistant</div>
-            <div>Hi! Ask me anything.</div>
-          </div>
-        ) : null}
+        {/* No initial message */}
         {messages.map((m, i) => (
           <div key={i} className={`bubble ${m.role}`}>
-            <div className="role">{m.role}</div>
+            <div className="role">{m.role === "assistant" ? "Brandon" : "Leo"}</div>
             <div>{m.content}</div>
           </div>
         ))}
         {loading ? (
           <div className="bubble assistant">
-            <div className="role">assistant</div>
-            <div>Thinking…</div>
+            <div className="role">Brandon</div>
+            <div>Typing…</div>
           </div>
         ) : null}
       </div>

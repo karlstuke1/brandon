@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "OpenPipe Chat",
-  description: "Simple chat UI using an OpenPipe model",
+  title: "Brandon & Leo Chat",
+  description: "WhatsApp conversation between Brandon and Leo",
 };
 
 import "../styles/globals.css";
@@ -16,7 +16,7 @@ export default function RootLayout({
       <body>
         <div className="container">
           <header className="header">
-            <h1>OpenPipe Chat</h1>
+            <h1>WhatsApp - Brandon</h1>
           </header>
           <main>{children}</main>
         </div>
