@@ -46,11 +46,24 @@ export default function Page() {
   const [showEmojis, setShowEmojis] = useState(false);
   const [messageCount, setMessageCount] = useState(0);
   const listRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // Scroll to bottom on new messages
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
   }, [messages.length]);
+
+  // Keep input focused
+  useEffect(() => {
+    if (!loading) {
+      inputRef.current?.focus();
+    }
+  }, [loading]);
+
+  // Auto-focus on mount
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   const send = useCallback(async () => {
     if (!input.trim() || loading) return;
@@ -101,6 +114,8 @@ export default function Page() {
       setError(e?.message || "Something went wrong");
     } finally {
       setLoading(false);
+      // Keep focus on input
+      setTimeout(() => inputRef.current?.focus(), 0);
     }
   }, [input, messages, loading]);
 
@@ -131,6 +146,7 @@ export default function Page() {
       </div>
       <div className="composer">
         <input
+          ref={inputRef}
           className="input"
           placeholder="Type a message and press Enter"
           value={input}

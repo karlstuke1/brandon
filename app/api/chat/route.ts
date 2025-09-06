@@ -30,9 +30,9 @@ export async function POST(req: NextRequest) {
         // Forward conversation as-is: user and assistant messages only
         ...messages.map((m) => ({ role: m.role, content: m.content } as Message)),
       ],
-      temperature: 1,
-      repetition_penalty: 0.5,
-      frequency_penalty: 0.5,
+      temperature: 0.7,
+      repetition_penalty: 0.2,
+      frequency_penalty: 0.2,
       store: true,
     };
 
